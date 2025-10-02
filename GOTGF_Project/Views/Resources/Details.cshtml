@@ -1,0 +1,29 @@
+﻿@model GOTGF_Project.Models.Resource
+
+@{
+    ViewData["Title"] = "Resource Details";
+}
+
+<div class="container mt-5">
+    <h1 class="text-success">📄 Resource Details</h1>
+    <hr class="border-success">
+
+    <dl class="row mt-4">
+        <dt class="col-sm-3 fw-bold">Project</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Project.ProjectName)</dd>
+
+        <dt class="col-sm-3 fw-bold">Resource Name</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.ResourceName)</dd>
+
+        <dt class="col-sm-3 fw-bold">Quantity</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Quantity)</dd>
+
+        <dt class="col-sm-3 fw-bold">Last Updated</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.LastUpdated)</dd>
+    </dl>
+
+    <div class="mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.ResourceID" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+    </div>
+</div>

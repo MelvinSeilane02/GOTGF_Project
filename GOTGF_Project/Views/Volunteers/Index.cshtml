@@ -1,0 +1,49 @@
+﻿@model IEnumerable<GOTGF_Project.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Volunteers";
+}
+
+<h1 class="text-white p-3 rounded" style="background-color: #28a745;">Volunteers</h1>
+
+<p>
+    <a asp-action="Create" class="btn" style="background-color: #28a745; color: #ffffff;">Create New</a>
+</p>
+
+<table class="table table-striped" style="background-color: #000000; color: #ffffff;">
+    <thead style="background-color: #28a745; color: #ffffff;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Skills)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Availability)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Skills)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Availability)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VolunteerID" class="btn btn-sm" style="background-color: #28a745; color: #ffffff;">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.VolunteerID" class="btn btn-sm ms-1" style="background-color: #ffffff; color: #000000;">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.VolunteerID" class="btn btn-sm ms-1" style="background-color: #dc3545; color: #ffffff;">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+﻿@model GOTGF_Project.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-white bg-success p-3 rounded">Volunteer Details</h1>
+
+<div class="card mb-3" style="background-color: #000000; color: #ffffff;">
+    <div class="card-header" style="background-color: #28a745; color: #ffffff;">
+        Volunteer Information
+    </div>
+    <div class="card-body">
+        <p><strong>User:</strong> @Model.User.Id</p>
+        <p><strong>Skills:</strong> @Model.Skills</p>
+        <p><strong>Availability:</strong> @Model.Availability</p>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model?.VolunteerID" class="btn" style="background-color: #28a745; color: #ffffff;">Edit</a>
+        <a asp-action="Index" class="btn btn-light">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model GOTGF_Project.Models.VolunteerAssignment
+
+@{
+    ViewData["Title"] = "Volunteer Assignment Details";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">📋 Volunteer Assignment Details</h1>
+
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Volunteer)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Volunteer.UserId)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Project)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Project.ProjectName)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.AssignedDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.AssignedDate)
+        </dd>
+    </dl>
+
+    <div class="mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.AssignmentID" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+    </div>
+</div>

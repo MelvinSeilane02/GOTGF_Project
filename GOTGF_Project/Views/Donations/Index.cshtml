@@ -1,0 +1,52 @@
+﻿@model IEnumerable<GOTGF_Project.Models.Donation>
+
+@{
+    ViewData["Title"] = "Donations";
+}
+
+<h1 class="text-success mb-4">Donations</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success mb-3">+ Add New Donation</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle shadow-sm">
+        <thead class="table-success text-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.DonationDate)</th>
+                <th>@Html.DisplayNameFor(model => model.User)</th>
+                <th>@Html.DisplayNameFor(model => model.Project)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <!-- Format Amount as Rand (ZAR) -->
+                    <td>
+                        R @String.Format("{0:N2}", item.Amount)
+                    </td>
+                    <td>
+                        @item.DonationDate.ToString("yyyy-MM-dd")
+                    </td>
+                    <td>
+                        @item.User?.Id
+                    </td>
+                    <td>
+                        @item.Project?.ProjectName
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Edit" asp-route-id="@item.DonationID" class="btn btn-sm btn-warning text-white">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.DonationID" class="btn btn-sm btn-info text-white">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
