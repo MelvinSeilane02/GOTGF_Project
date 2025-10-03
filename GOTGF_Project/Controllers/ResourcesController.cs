@@ -48,6 +48,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: Resources/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectName");
@@ -80,6 +81,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: Resources/Edit/5
+        [Authorize(Roles = "Admin,Volunteer")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -133,6 +135,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: Resources/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
