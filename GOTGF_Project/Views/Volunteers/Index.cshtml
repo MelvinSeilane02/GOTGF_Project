@@ -4,46 +4,39 @@
     ViewData["Title"] = "Volunteers";
 }
 
-<h1 class="text-white p-3 rounded" style="background-color: #28a745;">Volunteers</h1>
+<h1 class="text-white p-3 rounded bg-success">Volunteers</h1>
 
 <p>
-    <a asp-action="Create" class="btn" style="background-color: #28a745; color: #ffffff;">Create New</a>
+    <a asp-action="Create" class="btn btn-success text-white">Create New</a>
 </p>
 
-<table class="table table-striped" style="background-color: #000000; color: #ffffff;">
-    <thead style="background-color: #28a745; color: #ffffff;">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Skills)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Availability)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-dark table-striped align-middle">
+        <thead class="bg-success text-white">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Skills)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Availability)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.VolunteerID" class="btn btn-sm" style="background-color: #28a745; color: #ffffff;">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.VolunteerID" class="btn btn-sm ms-1" style="background-color: #ffffff; color: #000000;">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.VolunteerID" class="btn btn-sm ms-1" style="background-color: #dc3545; color: #ffffff;">Delete</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.User)</th>
+                <th>@Html.DisplayNameFor(model => model.Skills)</th>
+                <th>@Html.DisplayNameFor(model => model.Availability)</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-white">
+                        @Html.DisplayFor(modelItem => item.User.FullName)
+                        <!-- Or FirstName + " " + LastName -->
+                    </td>
+                    <td class="text-white">@Html.DisplayFor(modelItem => item.Skills)</td>
+                    <td class="text-white">@Html.DisplayFor(modelItem => item.Availability)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.VolunteerID" class="btn btn-success btn-sm text-white">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.VolunteerID" class="btn btn-light btn-sm ms-1 text-dark">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.VolunteerID" class="btn btn-danger btn-sm ms-1 text-white">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
