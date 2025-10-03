@@ -1,0 +1,54 @@
+﻿@model GOTGF_Project.Models.UserRoleViewModel
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-3 text-success">User Details</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3 fw-bold">Full Name</dt>
+                <dd class="col-sm-9">@(!string.IsNullOrEmpty(Model.FullName) ? Model.FullName : "(no name)")</dd>
+
+                <dt class="col-sm-3 fw-bold">Email</dt>
+                <dd class="col-sm-9">@Model.Email</dd>
+
+                <dt class="col-sm-3 fw-bold">Assigned Roles</dt>
+                <dd class="col-sm-9">
+                    @if (Model.CurrentRoles != null && Model.CurrentRoles.Any())
+                    {
+                        foreach (var r in Model.CurrentRoles)
+                        {
+                            <span class="badge bg-success text-dark me-1">@r</span>
+                        }
+                    }
+                    else
+                    {
+                        <span class="text-muted">No roles assigned</span>
+                    }
+                </dd>
+            </dl>
+        </div>
+
+        <div class="card-footer d-flex gap-2">
+            <a asp-controller="UserRole" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-success">Edit Role</a>
+            <a asp-controller="UserRole" asp-action="Index" class="btn btn-sm btn-secondary">Back to list</a>
+        </div>
+    </div>
+</div>
+
+@*@section Styles {
+    <style>
+        .badge.bg-success {
+            background-color: #28a745;
+            color: #000;
+        }
+
+        .card {
+            border: 1px solid #000;
+        }
+    </style>*@
+

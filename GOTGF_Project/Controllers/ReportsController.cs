@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 namespace GOTGF_Project.Controllers
 {
     [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "ADMIN")]
+    //[Authorize]
+
     public class ReportsController : Controller
     {
         private readonly ApplicationDbContext _context;

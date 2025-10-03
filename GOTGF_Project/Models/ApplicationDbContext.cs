@@ -2,15 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Composition;
-
 namespace GOTGF_Project.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
-        {
-        }
-
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         // You can include your custom tables here:
         public DbSet<Project> Projects { get; set; }
         public DbSet<Donation> Donations { get; set; }
@@ -19,5 +15,9 @@ namespace GOTGF_Project.Data
         public DbSet<VolunteerAssignment> VolunteerAssignments { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<DisasterAlert> DisasterAlerts { get; set; }
+        //public DbSet<GOTGF_Project.Models.UserRoleView_Model> UserRoleView_Model { get; set; } = default!; }
+
+        public DbSet<RoleChangeLog> RoleChangeLogs { get; set; }
+
     }
 }
