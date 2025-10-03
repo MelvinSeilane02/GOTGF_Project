@@ -1,0 +1,45 @@
+﻿@model GOTGF_Project.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">🆕 Create Volunteer</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="UserId" class="form-label"></label>
+                    <select asp-for="UserId" class="form-select" asp-items="ViewBag.UserId"></select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Skills" class="form-label"></label>
+                    <input asp-for="Skills" class="form-control" />
+                    <span asp-validation-for="Skills" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Availability" class="form-label"></label>
+                    <input asp-for="Availability" class="form-control" />
+                    <span asp-validation-for="Availability" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

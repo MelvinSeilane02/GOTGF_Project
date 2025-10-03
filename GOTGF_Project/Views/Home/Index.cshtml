@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center my-5">
+    <h1 class="display-3 fw-bold text-success">🌍 Welcome to GOTGF</h1>
+    <p class="lead text-muted">
+        Together we can make a difference by responding to disasters, supporting projects, and helping communities thrive.
+    </p>
+    <hr class="my-4" />
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a asp-controller="Projects" asp-action="Index" class="btn btn-success btn-lg shadow">View Projects</a>
+        <a asp-controller="Donations" asp-action="Index" class="btn btn-dark btn-lg shadow">Make a Donation</a>
+        <a asp-controller="DisasterAlerts" asp-action="Index" class="btn btn-outline-success btn-lg shadow">View Alerts</a>
+    </div>
+
+    <div class="mt-5">
+        <p class="fw-light">
+            Learn more about building web apps with <a href="https://learn.microsoft.com/aspnet/core" target="_blank" class="text-success fw-bold">ASP.NET Core</a>.
+        </p>
+    </div>
+</div>

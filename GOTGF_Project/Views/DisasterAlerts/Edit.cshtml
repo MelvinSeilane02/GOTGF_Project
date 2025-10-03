@@ -1,0 +1,55 @@
+﻿@model GOTGF_Project.Models.DisasterAlert
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-dark text-white">
+            <h2 class="mb-0">✏ Edit Disaster Alert</h2>
+        </div>
+
+        <div class="card-body bg-light">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="AlertID" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="ProjectID" class="form-label fw-bold text-dark"></label>
+                    <select asp-for="ProjectID" class="form-control" asp-items="ViewBag.ProjectID"></select>
+                    <span asp-validation-for="ProjectID" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="CreatedBy" class="form-label fw-bold text-dark"></label>
+                    <select asp-for="CreatedBy" class="form-control" asp-items="ViewBag.CreatedBy"></select>
+                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="AlertMessage" class="form-label fw-bold text-dark"></label>
+                    <input asp-for="AlertMessage" class="form-control" />
+                    <span asp-validation-for="AlertMessage" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="AlertDate" class="form-label fw-bold text-dark"></label>
+                    <input asp-for="AlertDate" type="date" class="form-control" />
+                    <span asp-validation-for="AlertDate" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-outline-dark px-4">⬅ Back to List</a>
+                    <input type="submit" value="💾 Save Changes" class="btn btn-success px-4" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

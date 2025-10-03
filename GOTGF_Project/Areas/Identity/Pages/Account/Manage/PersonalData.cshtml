@@ -1,0 +1,59 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Personal Data";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<h3 class="text-success fw-bold">@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="bg-white p-4 border border-dark rounded shadow-sm">
+            <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
+            <p class="text-danger">
+                <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+            </p>
+
+            <div class="mb-3">
+                <form id="download-data" asp-page="DownloadPersonalData" method="post">
+                    <button class="w-100 btn btn-success fw-bold" type="submit">Download</button>
+                </form>
+            </div>
+
+            <div>
+                <a id="delete" asp-page="DeletePersonalData" class="w-100 btn btn-danger fw-bold d-block text-center">Delete Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .bg-white {
+        background-color: #fff;
+    }
+</style>

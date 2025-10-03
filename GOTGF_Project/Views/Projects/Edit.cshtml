@@ -1,0 +1,65 @@
+﻿@model GOTGF_Project.Models.Project
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0" style="border-radius:15px;">
+        <div class="card-header text-center" style="background-color:#008000; color:white; border-radius:15px 15px 0 0;">
+            <h2 class="mb-0">✏️ Edit Project</h2>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="ProjectID" />
+
+                <div class="mb-3">
+                    <label asp-for="ProjectName" class="form-label fw-bold text-dark"></label>
+                    <input asp-for="ProjectName" class="form-control border-dark" />
+                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold text-dark"></label>
+                    <textarea asp-for="Description" class="form-control border-dark"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label fw-bold text-dark"></label>
+                    <select asp-for="Status" class="form-select border-dark">
+                        <option value="Planned">Planned</option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+
+                <div class="mb-3">
+                    <label asp-for="StartDate" class="form-label fw-bold text-dark"></label>
+                    <input asp-for="StartDate" type="date" class="form-control border-dark" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EndDate" class="form-label fw-bold text-dark"></label>
+                    <input asp-for="EndDate" type="date" class="form-control border-dark" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-success px-4 me-3">💾 Save</button>
+                    <a asp-action="Index" class="btn btn-outline-dark px-4">⬅️ Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

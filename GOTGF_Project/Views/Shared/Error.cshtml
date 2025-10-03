@@ -1,0 +1,62 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="text-center my-5">
+    <h1 class="display-4 text-danger">⚠ Error</h1>
+    <h3 class="text-dark">An error occurred while processing your request.</h3>
+
+    @if (Model.ShowRequestId)
+    {
+        <p class="text-muted mt-3">
+            <strong>Request ID:</strong> <code class="bg-dark text-white px-2 py-1 rounded">@Model.RequestId</code>
+        </p>
+    }
+
+    <div class="mt-4 p-4 border rounded bg-light">
+        <h5 class="text-success">Development Mode</h5>
+        <p class="text-dark">
+            Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+        </p>
+        <p class="text-dark">
+            <strong>Note:</strong> The Development environment shouldn't be enabled for deployed applications.
+            It can result in displaying sensitive information from exceptions to end users.
+        </p>
+        <p class="text-dark">
+            For local debugging, enable the <strong>Development</strong> environment by setting the
+            <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
+            and restarting the app.
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-success shadow">Back to Home</a>
+    </div>
+</div>
+
+<style>
+    /* Optional theme tweaks */
+    body {
+        background-color: #f8f9fa; /* Light background */
+        color: #000; /* Default text color */
+    }
+
+    h1.text-danger {
+        color: #dc3545; /* Red alert for errors */
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+    code {
+        font-family: monospace;
+    }
+</style>
