@@ -3,8 +3,33 @@
 @if (!String.IsNullOrEmpty(Model))
 {
     var statusMessageClass = Model.StartsWith("Error") ? "danger" : "success";
-    <div class="alert alert-@statusMessageClass alert-dismissible" role="alert">
+    <div class="alert alert-@statusMessageClass alert-dismissible fade show custom-status-message" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         @Model
     </div>
 }
+
+<style>
+    /* Custom Status Message Styling */
+    .custom-status-message {
+        border: 2px solid #28a745; /* green border */
+        background-color: #ffffff; /* white background */
+        color: #212529; /* black text */
+        font-weight: 500;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .alert-success.custom-status-message {
+        border-color: #28a745; /* green border for success */
+        color: #28a745; /* green text for success */
+    }
+
+    .alert-danger.custom-status-message {
+        border-color: #dc3545; /* red border for errors */
+        color: #dc3545; /* red text for errors */
+    }
+
+    .custom-status-message .btn-close {
+        filter: invert(0.3); /* slightly darker close button to match theme */
+    }
+</style>

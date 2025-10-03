@@ -4,41 +4,45 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="text-white p-3 rounded" style="background-color: #28a745;">Edit Volunteer</h1>
 
-<h4>Volunteer</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="card mb-3" style="background-color: #000000; color: #ffffff;">
+    <div class="card-header" style="background-color: #28a745; color: #ffffff;">
+        Volunteer Information
+    </div>
+    <div class="card-body">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="VolunteerID" />
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId" style="background-color: #000000; color: #ffffff;"></select>
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <label asp-for="Skills" class="control-label"></label>
-                <input asp-for="Skills" class="form-control" />
+                <input asp-for="Skills" class="form-control" style="background-color: #000000; color: #ffffff;" />
                 <span asp-validation-for="Skills" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <label asp-for="Availability" class="control-label"></label>
-                <input asp-for="Availability" class="form-control" />
+                <input asp-for="Availability" class="form-control" style="background-color: #000000; color: #ffffff;" />
                 <span asp-validation-for="Availability" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn" style="background-color: #28a745; color: #ffffff;" />
+                <a asp-action="Index" class="btn btn-light ms-2">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

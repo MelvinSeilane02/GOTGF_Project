@@ -1,59 +1,60 @@
 ﻿@model IEnumerable<GOTGF_Project.Models.Project>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Projects";
 }
 
-<h1>Projects</h1>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold text-dark">📋 Projects</h1>
+        <a asp-action="Create" class="btn btn-success px-4">➕ Create New</a>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProjectID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProjectID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProjectID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="card shadow-lg border-0" style="border-radius:15px;">
+        <div class="card-body p-4">
+            <table class="table table-striped table-hover align-middle">
+                <thead style="background-color:#008000; color:white;">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ProjectName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Description)</th>
+                        <th>@Html.DisplayNameFor(model => model.Status)</th>
+                        <th>@Html.DisplayNameFor(model => model.StartDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.EndDate)</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.ProjectName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                            <td>
+                                @if (item.Status == "Planned")
+                                {
+                                    <span class="badge bg-secondary">Planned</span>
+                                }
+                                else if (item.Status == "Ongoing")
+                                {
+                                    <span class="badge bg-warning text-dark">Ongoing</span>
+                                }
+                                else // Completed
+                                {
+                                    <span class="badge bg-success">Completed</span>
+                                }
+                            </td>
+                            <td>@item.StartDate?.ToShortDateString()</td>
+                            <td>@item.EndDate?.ToShortDateString()</td>
+                            <td class="text-center">
+                                <a asp-action="Edit" asp-route-id="@item.ProjectID" class="btn btn-sm btn-outline-dark me-2">✏️ Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.ProjectID" class="btn btn-sm btn-outline-success me-2">🔍 Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.ProjectID" class="btn btn-sm btn-danger">🗑️ Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

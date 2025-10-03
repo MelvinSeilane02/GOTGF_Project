@@ -1,5 +1,5 @@
 ﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
     {
         Layout = parentLayout.ToString();
     }
@@ -9,20 +9,57 @@
     }
 }
 
-<h1>Manage your account</h1>
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-success">Manage Your Account</h1>
+        <h5 class="text-dark">Change your account settings</h5>
+        <hr class="border-success" />
+    </div>
 
-<div>
-    <h2>Change your account settings</h2>
-    <hr />
     <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
+        <!-- Sidebar Navigation -->
+        <div class="col-md-3 mb-3">
+            <div class="card border-success shadow-sm">
+                <div class="card-body p-2">
+                    <partial name="_ManageNav" />
+                </div>
+            </div>
         </div>
+
+        <!-- Main Content Area -->
         <div class="col-md-9">
-            @RenderBody()
+            <section class="p-4 border rounded shadow bg-white">
+                @RenderBody()
+            </section>
         </div>
     </div>
 </div>
+
+<style>
+    body {
+        background-color: #f8f9fa; /* light grey background */
+    }
+
+    h1 {
+        color: #28a745; /* green header */
+    }
+
+    h5 {
+        color: #212529; /* dark text */
+    }
+
+    hr.border-success {
+        border-top: 2px solid #28a745;
+    }
+
+    section {
+        background-color: #fff;
+    }
+
+    .card.border-success {
+        border-color: #28a745;
+    }
+</style>
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
