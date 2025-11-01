@@ -81,7 +81,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: Resources/Edit/5
-        [Authorize(Roles = "Admin,Volunteer")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

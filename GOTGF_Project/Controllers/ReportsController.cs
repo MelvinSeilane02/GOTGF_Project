@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace GOTGF_Project.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Volunteer")]
     //[Authorize(Roles = "ADMIN")]
     //[Authorize]
 
@@ -63,6 +63,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: Reports/Create
+        [Authorize(Roles = "Admin,Volunteer")]
         public IActionResult Create()
         {
             ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectName");
@@ -97,6 +98,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: Reports/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -172,6 +174,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // POST: Reports/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -112,77 +112,6 @@ namespace GOTGF_Project.Controllers.Admin
         }
 
         // POST: admin/users/edit
-        /*[HttpPost("edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string Id, string SelectedRole)
-        {
-            if (string.IsNullOrEmpty(Id))
-            {
-                TempData["RoleChangeError"] = "Invalid request. User is missing.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            var user = await _userManager.FindByIdAsync(Id);
-            if (user == null)
-            {
-                TempData["RoleChangeError"] = "User not found.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            // Prevent admin from changing their own role
-            var currentUserId = _userManager.GetUserId(User);
-            if (Id == currentUserId)
-            {
-                TempData["RoleChangeError"] = "You cannot change your own role.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            // If clearing role (empty selection) -> remove all roles
-            if (string.IsNullOrEmpty(SelectedRole))
-            {
-                var oldRoles = await _userManager.GetRolesAsync(user);
-                if (oldRoles.Any())
-                {
-                    var removeRes = await _userManager.RemoveFromRolesAsync(user, oldRoles);
-                    if (!removeRes.Succeeded)
-                    {
-                        TempData["RoleChangeError"] = "Failed to remove existing roles.";
-                        return RedirectToAction(nameof(Index));
-                    }
-                }
-
-                TempData["RoleChangeSuccess"] = $"Cleared roles for {user.Email}.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            // Validate role exists
-            if (!await _roleManager.RoleExistsAsync(SelectedRole))
-            {
-                TempData["RoleChangeError"] = $"Role '{SelectedRole}' does not exist.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            // Remove existing roles
-            // Remove roles
-            var currentRoles = await _userManager.GetRolesAsync(user);
-            var removeResult = await _userManager.RemoveFromRolesAsync(user, currentRoles);
-            if (!removeResult.Succeeded)
-            {
-                TempData["RoleChangeError"] = "Failed to remove existing roles.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            // Add new role
-            var addResult = await _userManager.AddToRoleAsync(user, SelectedRole);
-            if (!addResult.Succeeded)
-            {
-                TempData["RoleChangeError"] = "Failed to add the selected role.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            TempData["RoleChangeSuccess"] = $"Role for {user.Email} updated to {SelectedRole}.";
-            return RedirectToAction(nameof(Index));
-        } */
         [HttpPost("edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(UserEditViewModel model)
@@ -253,28 +182,6 @@ namespace GOTGF_Project.Controllers.Admin
             TempData["RoleChangeSuccess"] = $"Role for {user.Email} updated to {model.SelectedRole}.";
             return RedirectToAction(nameof(Index));
         }
-
-
-       /* // OPTIONAL: Delete user (guard carefully)
-        // GET: admin/users/delete/{id}
-        [HttpGet("delete/{id}")]
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (string.IsNullOrEmpty(id)) return NotFound();
-
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
-
-            var vm = new UserRoleViewModel
-            {
-                Id = user.Id,
-                Email = user.Email,
-                FullName = user.FullName,
-                CurrentRoles = await _userManager.GetRolesAsync(user)
-            };
-
-            return View(vm);
-        }*/
 
         // POST: admin/users/delete
         [HttpPost("delete")]

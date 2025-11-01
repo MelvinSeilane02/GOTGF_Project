@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GOTGF_Project.Controllers
 {
-    [Authorize(Roles = "Admin")] // Only Admins can access this controller
+    [Authorize(Roles = "Admin,Volunteer")]
     public class DisasterAlertsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -49,6 +49,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: DisasterAlerts/Create
+        [Authorize(Roles = "Admin,Volunteer")]
         public IActionResult Create()
         {
             ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectName");
@@ -83,6 +84,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: DisasterAlerts/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -138,6 +140,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: DisasterAlerts/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

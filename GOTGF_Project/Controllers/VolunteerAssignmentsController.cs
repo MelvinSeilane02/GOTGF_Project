@@ -49,6 +49,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: VolunteerAssignments/Create
+        [Authorize(Roles = "Admin,Volunteer")]
         public IActionResult Create()
         {
             ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectName");
@@ -83,6 +84,7 @@ namespace GOTGF_Project.Controllers
         }
 
         // GET: VolunteerAssignments/Edit/5
+        [Authorize(Roles = "Admin,Volunteer")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
