@@ -146,8 +146,13 @@
                     <ul class="navbar-nav ms-auto align-items-lg-center">
                         @if (SignInManager.IsSignedIn(User))
                         {
+                            var currentUser = await UserManager.GetUserAsync(User);
+                            var displayName = currentUser?.FullName ?? currentUser?.UserName ?? "User";
+
                             <li class="nav-item me-3">
-                                <span class="nav-link"><i class="fa-solid fa-user-circle"></i> Hello, @UserManager.GetUserName(User)</span>
+                                <span class="nav-link">
+                                    <i class="fa-solid fa-user-circle"></i> Hello, @displayName!
+                                </span>
                             </li>
                             <li class="nav-item">
                                 <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
@@ -171,6 +176,7 @@
                             </li>
                         }
                     </ul>
+
                 </div>
             </div>
         </nav>
